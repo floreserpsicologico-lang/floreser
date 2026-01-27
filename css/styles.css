@@ -1,0 +1,83 @@
+    .scroll-smooth { scroll-behavior: smooth; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-link.active { color: #702F8A; border-bottom-color: #702F8A; }
+        .snap-mandatory { scroll-snap-type: x mandatory; }
+        .snap-center { scroll-snap-align: center; }
+        #team-slider { scroll-padding-left: 1rem; scroll-padding-right: 1rem; }
+        @media (min-width: 768px) { #team-slider { scroll-padding-left: 0; scroll-padding-right: 0; } }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Animaciones Modal */
+        #serviceModal { transition: visibility 0.3s; }
+        .modal-backdrop-enter { animation: backdropFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .modal-backdrop-leave { animation: backdropFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .modal-card-enter { animation: modalScaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .modal-card-leave { animation: modalScaleOut 0.3s ease-in forwards; }
+        .animate-item { opacity: 0; transform: translateY(20px); animation: slideUpFade 0.5s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes backdropFadeIn { from { opacity: 0; backdrop-filter: blur(0px); } to { opacity: 1; backdrop-filter: blur(4px); } }
+        @keyframes backdropFadeOut { from { opacity: 1; backdrop-filter: blur(4px); } to { opacity: 0; backdrop-filter: blur(0px); } }
+        @keyframes modalScaleIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes modalScaleOut { from { opacity: 1; transform: scale(1) translateY(0); } to { opacity: 0; transform: scale(0.95) translateY(10px); } }
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .modal-content li { position: relative; padding-left: 2rem; margin-bottom: 0.75rem; }
+        .modal-content li::before {
+            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            color: #0d9488; position: absolute; left: 0; top: 2px;
+            background-color: #ccfbf1; width: 20px; height: 20px; border-radius: 50%;
+            font-size: 10px; display: flex; align-items: center; justify-content: center;
+        }
+
+        .drive-iframe-container { position: relative; width: 100%; padding-bottom: 177.77%; height: 0; background: #000; }
+        .drive-iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+
+          /* --- ESTILOS DE TRANSICIÓN Y TABS --- */
+    .tab-btn {
+      transition: all .2s ease;
+    }
+    .tab-btn.active {
+      background: #ffffff;
+      color: #7c3aed; /* purple-600 */
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.10);
+    }
+    .modal-overlay { transition: opacity 0.3s ease; }
+    .modal-overlay.hidden { opacity: 0; pointer-events: none; }
+    .modal-overlay:not(.hidden) { opacity: 1; pointer-events: auto; }
+
+
+    [id$="-list"] > div {
+        overflow: hidden; 
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: 640px) {
+        [id$="-list"] .flex {
+            flex-wrap: wrap; 
+        }
+        
+        [id$="-list"] button {
+             margin-top: 0.5rem;
+             width: 100%; 
+             justify-content: center;
+        }
+        
+        [id$="-list"] img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+        }
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap; 
+    }
