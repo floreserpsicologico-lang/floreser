@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Psicológico FloreSer | Tu Bienestar es Primero</title>
+
+    <meta name="description" content="¿Buscas psicólogos en Ilo y Arequipa? En Centro Psicológico FloreSer ofrecemos terapia individual, de pareja, talleres y neuropediatría. ¡Agenda tu cita hoy!">
+    <meta name="keywords" content="psicólogos en ilo, psicólogos arequipa, neuropediatra ilo, terapia de pareja, terapia individual, salud mental, ansiedad, depresión">
+    <meta name="author" content="Centro Psicológico FloreSer">
+
+    <link rel="icon" href="img/icon.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/tailwind.config.js"></script>
+</head>
+
+<body class="font-sans text-neutral-800 antialiased bg-neutral-50 scroll-smooth">
+
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#">
+                        <img src="img/logo.jpg" alt="Logo" class="h-12 w-auto mr-3 object-contain"
+                             onerror="this.parentElement.innerHTML='<span class=\'text-2xl font-serif font-bold text-brand-700\'><i class=\'fas fa-brain mr-2\'></i>FloreSer</span>'">
+                    </a>
+                </div>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="nav-link text-gray-600 hover:text-highlight border-b-2 border-transparent pb-1 font-medium transition duration-300">Inicio</a>
+                    <a href="#nosotros" class="nav-link text-gray-600 hover:text-highlight border-b-2 border-transparent pb-1 font-medium transition duration-300">Nosotros</a>
+                    <a href="#servicios" class="nav-link text-gray-600 hover:text-highlight border-b-2 border-transparent pb-1 font-medium transition duration-300">Servicios</a>
+                    <a href="#equipo" class="nav-link text-gray-600 hover:text-highlight border-b-2 border-transparent pb-1 font-medium transition duration-300">Equipo</a>
+                    <a href="#testimonios" class="nav-link text-gray-600 hover:text-highlight border-b-2 border-transparent pb-1 font-medium transition duration-300">Testimonios</a>
+
+                    <a href="#contacto" class="px-5 py-2.5 bg-brand-600 text-white rounded-full hover:bg-brand-700 transition shadow-lg transform hover:-translate-y-0.5 font-medium">
+                        Agendar Cita
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-highlight focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#inicio" onclick="toggleMobileMenu()" class="mobile-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-highlight hover:bg-brand-50 rounded-md">Inicio</a>
+                <a href="#nosotros" onclick="toggleMobileMenu()" class="mobile-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-highlight hover:bg-brand-50 rounded-md">Nosotros</a>
+                <a href="#servicios" onclick="toggleMobileMenu()" class="mobile-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-highlight hover:bg-brand-50 rounded-md">Servicios</a>
+                <a href="#equipo" onclick="toggleMobileMenu()" class="mobile-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-highlight hover:bg-brand-50 rounded-md">Equipo</a>
+                <a href="#testimonios" onclick="toggleMobileMenu()" class="mobile-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-highlight hover:bg-brand-50 rounded-md">Testimonios</a>
+                <a href="#contacto" onclick="toggleMobileMenu()" class="block w-full mt-4 px-5 py-3 bg-brand-600 text-white rounded-lg font-medium">Agendar Cita</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 pb-20 md:pb-0 overflow-hidden bg-gray-100 section-spy">
+        <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-1000 ease-in-out transform scale-105" style="background-color: #f3f4f6;">
+            <div class="absolute inset-0 bg-white/10 bg-gradient-to-r from-white via-white/20 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="max-w-3xl transition-opacity duration-700 ease-in-out pl-2" id="hero-content">
+                <span id="hero-subtitle" class="text-brand-700 font-bold tracking-wider uppercase text-sm mb-2 block drop-shadow-sm">Bienvenido</span>
+
+                <h1 id="hero-title" class="text-4xl md:text-6xl font-serif font-extrabold text-gray-900 leading-tight mb-6 drop-shadow-sm">
+                    Centro Psicológico <br>
+                    <span class="text-brand-600">FloreSer</span>
+                </h1>
+
+                <p id="hero-desc" class="text-lg md:text-xl text-gray-800 font-medium mb-8 leading-relaxed max-w-2xl drop-shadow-sm">
+                    Cargando contenido...
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contacto" class="px-8 py-4 bg-brand-600 text-white rounded-full font-bold text-lg hover:bg-brand-700 transition shadow-lg text-center transform hover:-translate-y-1 hover:shadow-xl">
+                        Comenzar ahora
+                    </a>
+                    <a href="#servicios" class="px-8 py-4 bg-white/90 backdrop-blur-sm text-brand-600 border-2 border-brand-600 rounded-full font-bold text-lg hover:bg-brand-50 transition text-center transform hover:-translate-y-1 shadow-md">
+                        Ver Servicios
+                    </a>
+                </div>
+            </div>
+
+            <div id="hero-dots" class="mt-12 flex justify-center space-x-3 z-20 relative md:absolute md:bottom-10 md:left-1/2 md:transform md:-translate-x-1/2 md:mt-0"></div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="values-cards" class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <p class="text-gray-500 md:col-span-3 text-center">Cargando valores...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-20 bg-brand-50 section-spy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative">
+                    <div class="absolute top-0 left-0 w-full h-full bg-brand-200 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                    <img id="about-image" src="img/image_1.jpg" alt="Consultorio Psicológico" class="relative rounded-2xl shadow-lg w-full object-cover h-96"
+                         onerror="this.src='https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&q=80'">
+                </div>
+                <div class="md:w-1/2">
+                    <span id="about-tag" class="text-brand-600 font-bold uppercase tracking-wide text-sm">Sobre Nosotros</span>
+                    <h2 id="about-title" class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6 mt-2">Compromiso con tu salud mental</h2>
+                    <p id="about-text" class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Cargando contenido...
+                    </p>
+                    <ul id="about-bullets" class="space-y-4 mb-8">
+                        <li class="text-gray-500">Cargando...</li>
+                    </ul>
+                    <a id="about-cta" href="#contacto" class="inline-block px-6 py-3 bg-brand-600 text-white rounded-lg font-bold hover:bg-brand-700 transition">Conocer más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-20 bg-gray-50 section-spy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <span class="text-brand-600 font-bold uppercase tracking-wide">Nuestros Servicios</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">¿Cómo podemos ayudarte?</h2>
+        </div>
+        <div id="services-grid" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <p class="text-center col-span-3 text-gray-500">Cargando servicios...</p>
+        </div>
+    </section>
+
+    <section id="equipo" class="py-24 bg-white relative section-spy">
+        <div class="absolute top-0 left-0 w-full h-1/2 bg-brand-50 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-brand-600 font-bold uppercase tracking-wide text-sm">Nuestro Capital Humano</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Especialistas a tu servicio</h2>
+            </div>
+
+            <div class="relative group max-w-6xl mx-auto">
+                <button onclick="scrollTeam('left')" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 lg:-ml-12 z-20 bg-white/80 backdrop-blur-sm text-brand-600 p-3 rounded-full shadow-lg hover:bg-white focus:outline-none transition md:opacity-0 md:group-hover:opacity-100 border border-gray-100 flex items-center justify-center">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+
+                <div id="team-slider" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory no-scrollbar scroll-smooth">
+                    <p class="w-full text-center text-gray-500">Cargando equipo...</p>
+                </div>
+
+                <button onclick="scrollTeam('right')" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 lg:-mr-12 z-20 bg-white/80 backdrop-blur-sm text-brand-600 p-3 rounded-full shadow-lg hover:bg-white focus:outline-none transition md:opacity-0 md:group-hover:opacity-100 border border-gray-100 flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+
+            <div class="flex justify-center mt-4 md:hidden text-gray-400 text-sm animate-pulse">
+                <i class="fas fa-arrow-left mr-2"></i> Desliza o usa las flechas <i class="fas fa-arrow-right ml-2"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="py-20 bg-gray-50 section-spy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-600 font-bold uppercase tracking-wide">Voces que Inspiran</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Historias de Mamás</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">Descubre cómo hemos ayudado a familias a recuperar su bienestar.</p>
+            </div>
+            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                <p class="col-span-3 text-center text-gray-500">Cargando testimonios...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-20 bg-white section-spy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12">
+                <span class="text-brand-600 font-bold uppercase tracking-wide">¿De dónde nos estás viendo?</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2 mb-6">Selecciona tu sede preferida</h2>
+
+                <div id="location-buttons" class="flex flex-wrap justify-center gap-4">
+                    <p class="text-gray-500">Cargando sedes...</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold text-gray-900 mb-6">Estamos aquí para escucharte</h2>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        Da el primer paso hacia tu bienestar. Agenda tu cita en nuestra sede de
+                        <span id="nombre-sede-texto" class="font-bold text-brand-600">...</span> o solicita informes.
+                    </p>
+
+                    <div id="location-info" class="space-y-6 fade-in">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900" id="location-title">Sede</h3>
+                                <div class="text-gray-600 whitespace-pre-line" id="location-address">Cargando dirección...</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">WhatsApp / Teléfono</h3>
+                                <p class="text-gray-600" id="location-phone-text">Cargando...</p>
+                                <p class="text-brand-600 text-sm font-medium mt-1">
+                                    <a href="#" id="location-wsp-link" target="_blank" class="hover:underline">Enviar mensaje directo →</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 mt-6 border-t border-gray-100 pt-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">Horarios de Atención</h3>
+                                <div id="horario-display" class="text-gray-600 whitespace-pre-line">
+                                    Cargando horarios...
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">Email</h3>
+                                <p class="text-gray-600" id="email-contact">Cargando...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+                    <form onsubmit="handleSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                                <input type="text" id="nombre" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Tu Nombre">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                                <input type="tel" id="telefono" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 outline-none" placeholder="9XX XXX XXX">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Servicio de Interés</label>
+                            <select id="servicio-select" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 outline-none bg-white">
+                                <option>Consulta General</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Sede de Preferencia</label>
+                            <select id="sede" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 outline-none bg-white">
+                                <option>Cargando sedes...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje (Opcional)</label>
+                            <textarea id="mensaje" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Hola, quisiera agendar una cita para..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i> Agendar por WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-16 relative h-96 rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                <div id="map-container" class="absolute inset-0 w-full h-full fade-in flex items-center justify-center bg-gray-100">
+                    <p class="text-gray-500">Cargando mapa...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-brain text-brand-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-serif font-bold">FloreSer</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Comprometidos con tu salud mental y bienestar emocional en nuestras sedes. Tu tranquilidad es nuestra prioridad.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#inicio" class="hover:text-brand-500 transition">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-brand-500 transition">Nosotros</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-500 transition">Servicios</a></li>
+                        <li><a href="#equipo" class="hover:text-brand-500 transition">Especialistas</a></li>
+                        <li><a href="#testimonios" class="hover:text-brand-500 transition">Testimonios</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#servicios" class="hover:text-brand-500 transition">Terapia Individual</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-500 transition">Terapia de Pareja</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-500 transition">Ansiedad y Depresión</a></li>
+                        <li><a href="#servicios" class="hover:text-brand-500 transition">Talleres Grupales</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/profile.php?id=100064840955268" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@c.ps_floreser_ilo" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-600 transition"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; <span id="copyright-year">2025</span> Centro Psicológico FloreSer. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="serviceModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div id="modalBackdrop" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeServiceModal()"></div>
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div id="modalCard" class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-2xl border border-white/20">
+                <button onclick="closeServiceModal()" class="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all hover:rotate-90"><i class="fas fa-times"></i></button>
+
+                <div class="relative h-64 overflow-hidden group">
+                    <img id="modalImage" src="" alt="Servicio" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full animate-item delay-100">
+                        <span class="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-brand-500/80 backdrop-blur-md rounded-full">Servicio Profesional</span>
+                        <h3 class="text-3xl font-serif font-bold text-white drop-shadow-md leading-tight" id="modalTitle">Título</h3>
+                    </div>
+                </div>
+
+                <div class="px-8 py-8 bg-white">
+                    <div class="mb-8 animate-item delay-200">
+                        <p class="text-xl font-medium text-brand-800 leading-relaxed border-l-4 border-brand-500 pl-4 italic" id="modalHook">Hook</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 animate-item delay-300">
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Lo que lograrás</h4>
+                            <ul class="space-y-3 modal-content text-gray-600" id="modalBenefits"></ul>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-xl">
+                            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Preguntas Frecuentes</h4>
+                            <div class="space-y-4" id="modalFaq"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-8 py-6 flex flex-col sm:flex-row sm:justify-between items-center gap-4 border-t border-gray-100 animate-item delay-300">
+                    <button type="button" onclick="closeServiceModal()" class="text-sm font-semibold text-gray-500 hover:text-gray-800 transition">Cancelar</button>
+                    <button type="button" onclick="goToContact()" id="modalCtaBtn" class="w-full sm:w-auto inline-flex justify-center items-center rounded-xl px-8 py-3.5 bg-brand-600 text-base font-bold text-white shadow-lg hover:bg-brand-700 transition-all">
+                        Agendar Cita Ahora <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>

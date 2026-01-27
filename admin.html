@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - FloreSer</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+<body class="bg-gray-100 font-sans text-gray-800">
+
+  <div id="login-container" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-700 px-4">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-sm">
+      <div class="text-center mb-6">
+        <i class="fas fa-shield-alt text-5xl text-purple-600 mb-3"></i>
+        <h2 class="text-2xl font-bold text-gray-800">Panel Administrativo</h2>
+        <p class="text-gray-500 text-sm">FloreSer - Centro Psicológico</p>
+      </div>
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+          <input type="password" id="password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition" required>
+        </div>
+        <button type="submit" class="w-full bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700 font-semibold transition shadow-md hover:shadow-lg">
+          <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+        </button>
+      </form>
+      <p id="login-msg" class="text-red-500 text-sm mt-3 text-center min-h-[20px]"></p>
+    </div>
+  </div>
+
+  <div id="dashboard-container" class="hidden min-h-screen pb-20">
+    
+    <nav class="bg-gradient-to-r from-purple-700 to-indigo-800 text-white p-4 shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center">
+        
+        <h1 class="font-bold text-lg sm:text-xl flex items-center gap-2 truncate">
+          <i class="fas fa-cog"></i>
+          <span class="truncate">Panel de Control FloreSer</span>
+        </h1>
+
+        <div class="flex items-center gap-3 justify-end flex-wrap">
+          <a href="https://floreser-nine.vercel.app/" id="btn-ver-pagina" target="_blank" rel="noopener noreferrer"
+            class="text-sm bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg transition inline-flex items-center shadow-md">
+            <i class="fas fa-eye sm:mr-1"></i>
+            <span class="hidden sm:inline">Ver Página</span>
+          </a>
+
+          <button id="btn-logout"
+            class="text-sm bg-purple-900 hover:bg-purple-950 px-4 py-2 rounded-lg transition inline-flex items-center shadow-md border border-purple-800">
+            <i class="fas fa-sign-out-alt sm:mr-1"></i>
+            <span class="hidden sm:inline">Cerrar Sesión</span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6">
+      
+      <div class="flex space-x-2 mb-6 overflow-x-auto pb-2 scrollbar-hide" id="tabs-container">
+        <button data-target="info" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-white shadow active bg-gray-200 text-gray-700">
+          <i class="fas fa-map-marker-alt mr-2"></i>Sedes / Contacto
+        </button>
+        <button data-target="slides" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-gray-200 text-gray-700">
+          <i class="fas fa-images mr-2"></i>Carrusel
+        </button>
+        <button data-target="home" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-gray-200 text-gray-700">
+            <i class="fas fa-home mr-2"></i>Valores - Nosotros
+        </button>
+        <button data-target="services" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-gray-200 text-gray-700">
+          <i class="fas fa-th-large mr-2"></i>Servicios
+        </button>
+        <button data-target="team" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-gray-200 text-gray-700">
+          <i class="fas fa-users mr-2"></i>Equipo
+        </button>
+        <button data-target="testimonials" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-gray-200 text-gray-700">
+          <i class="fas fa-comment-dots mr-2"></i>Testimonios
+        </button>
+        <button data-target="leads" class="tab-btn whitespace-nowrap px-6 py-3 rounded-lg font-semibold bg-gray-200 text-gray-700">
+            <i class="fas fa-address-book mr-2"></i>Leads
+        </button>
+      </div>
+
+      <div id="tab-info" class="tab-content">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-4 gap-4">
+            <h3 class="text-2xl font-bold text-gray-800">
+              <i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Sedes
+            </h3>
+            <button id="btn-open-location-modal" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-semibold shadow transition w-full sm:w-auto">
+              <i class="fas fa-plus mr-2"></i>Nueva Sede
+            </button>
+          </div>
+          <div id="locations-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+      </div>
+
+      <div id="tab-slides" class="tab-content hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800"><i class="fas fa-images mr-2 text-purple-600"></i>Slides del Carrusel</h3>
+          
+          <div id="slides-list" class="space-y-4 mb-8"></div>
+
+          <div class="border-t pt-6 bg-gray-50 p-6 rounded-xl border border-gray-100">
+            <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center" id="slide-form-title">
+                <i class="fas fa-plus-circle mr-2"></i>Añadir/Editar Slide
+            </h4>
+            <form id="add-slide-form" class="space-y-4">
+              <input type="hidden" id="slide_id_edit">
+              <input type="text" id="new_subtitle" placeholder="Subtítulo" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200 outline-none" required>
+              <textarea id="new_title" placeholder="Título (acepta HTML)" rows="2" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200 outline-none" required></textarea>
+              <textarea id="new_desc" placeholder="Descripción" rows="2" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200 outline-none" required></textarea>
+
+              <div class="space-y-2">
+                <label class="text-sm font-semibold text-gray-700">Imagen</label>
+                <div class="flex gap-2 flex-wrap">
+                  <input type="text" id="new_img" placeholder="URL de Imagen" class="flex-1 border p-3 rounded-lg min-w-[200px]" required>
+                  <label class="px-4 py-3 rounded-lg bg-gray-900 text-white flex items-center gap-2 cursor-pointer hover:bg-black transition">
+                    <i class="fas fa-upload"></i>
+                    <span class="text-sm font-semibold">Elegir</span>
+                    <input id="new_img_file" type="file" accept="image/*" class="hidden">
+                  </label>
+                  <button type="button" id="btn-upload-slide" class="px-4 py-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700 font-semibold transition">Subir</button>
+                </div>
+                <div class="flex items-center gap-3 mt-2">
+                  <img id="new_img_preview" src="" class="hidden w-28 h-20 object-cover rounded-lg border bg-gray-100 shadow-sm" />
+                </div>
+              </div>
+
+              <div class="flex gap-2 flex-wrap pt-2 form-actions">
+                <button type="submit" id="btn-save-slide" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-semibold flex-1 shadow-md transition">Guardar</button>
+                <button type="button" id="btn-cancel-slide" class="hidden bg-gray-400 text-white px-6 py-3 rounded-lg hover:bg-gray-500 font-semibold shadow-md transition">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-services" class="tab-content hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-4 gap-4">
+            <h3 class="text-2xl font-bold text-gray-800"><i class="fas fa-th-large mr-2 text-purple-600"></i>Servicios</h3>
+            <button id="btn-open-service-modal" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-semibold shadow transition w-full sm:w-auto">
+              <i class="fas fa-plus mr-2"></i>Nuevo Servicio
+            </button>
+          </div>
+          <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+        </div>
+      </div>
+
+      <div id="tab-team" class="tab-content hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800"><i class="fas fa-users mr-2 text-purple-600"></i>Miembros del Equipo</h3>
+          
+          <div id="team-list" class="space-y-4 mb-8"></div>
+          
+          <div class="border-t pt-6 bg-gray-50 p-6 rounded-xl border border-gray-100">
+            <h4 class="font-bold text-lg mb-4 text-blue-800" id="team-form-title"><i class="fas fa-user-plus mr-2"></i>Añadir Miembro</h4>
+            <form id="add-team-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="hidden" id="team_id_edit">
+              <input type="text" id="new_team_name" placeholder="Nombre" class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-100 outline-none" required>
+              <input type="text" id="new_team_role" placeholder="Rol" class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-100 outline-none" required>
+              <input type="text" id="new_team_cmp" placeholder="CMP/CPsP" class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-100 outline-none">
+              <input type="text" id="new_team_color" placeholder="Color (ej: blue)" class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-100 outline-none">
+              <textarea id="new_team_desc" placeholder="Descripción" rows="3" class="border p-3 rounded-lg md:col-span-2 focus:ring-2 focus:ring-blue-100 outline-none" required></textarea>
+              <div class="md:col-span-2 flex items-center gap-2 bg-white p-3 rounded border">
+                <input id="team_active" type="checkbox" class="w-5 h-5 text-purple-600 rounded" checked>
+                <label for="team_active" class="text-sm text-gray-700 font-medium cursor-pointer">Mostrar en la web (Activo)</label>
+              </div>
+              <div class="md:col-span-2 flex gap-2 flex-wrap form-actions">
+                <button type="submit" id="btn-save-team" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-semibold flex-1 shadow-md transition">Guardar</button>
+                <button type="button" id="btn-cancel-team" class="hidden bg-gray-400 text-white px-6 py-3 rounded-lg hover:bg-gray-500 font-semibold shadow-md transition">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-testimonials" class="tab-content hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800"><i class="fas fa-comment-dots mr-2 text-purple-600"></i>Testimonios</h3>
+          
+          <div id="testimonials-list" class="space-y-4 mb-8"></div>
+          
+          <div class="border-t pt-6 bg-gray-50 p-6 rounded-xl border border-gray-100">
+            <h4 class="font-bold text-lg mb-4 text-blue-800" id="test-form-title"><i class="fas fa-video mr-2"></i>Añadir Testimonio</h4>
+            <form id="add-test-form" class="space-y-4">
+              <input type="hidden" id="test_id_edit">
+              <input type="text" id="new_test_name" placeholder="Nombre" class="w-full border p-3 rounded-lg" required>
+              <input type="text" id="new_test_video" placeholder="URL Video" class="w-full border p-3 rounded-lg" required>
+              <div class="flex gap-2 flex-wrap form-actions">
+                <button type="submit" id="btn-save-test" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-semibold flex-1 shadow-md transition">Guardar</button>
+                <button type="button" id="btn-cancel-test" class="hidden bg-gray-400 text-white px-6 py-3 rounded-lg hover:bg-gray-500 font-semibold shadow-md transition">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-home" class="tab-content hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold mb-6 border-b pb-4 text-gray-800">
+            <i class="fas fa-home mr-2 text-purple-600"></i>Valores + Nosotros
+          </h3>
+          <form id="home-form" class="space-y-8">
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <h4 class="font-bold text-lg mb-4 text-gray-800"><i class="fas fa-star mr-2 text-purple-600"></i>Valores (3 tarjetas)</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-4 rounded-xl border shadow-sm hover:shadow-md transition">
+                  <p class="text-xs font-bold mb-2 uppercase text-gray-500 tracking-wide">Tarjeta 1</p>
+                  <div class="flex gap-2 mb-2 flex-wrap">
+                    <input id="val1_icon" class="flex-1 border p-2 rounded text-sm" placeholder="Icono">
+                    <button type="button" class="btn-icon-picker px-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition" data-input="val1_icon"><i class="fas fa-icons"></i></button>
+                  </div>
+                  <input id="val1_title" class="w-full border p-2 rounded mb-2 text-sm font-semibold" placeholder="Título">
+                  <textarea id="val1_desc" class="w-full border p-2 rounded text-sm" rows="3" placeholder="Descripción"></textarea>
+                </div>
+                <div class="bg-white p-4 rounded-xl border shadow-sm hover:shadow-md transition">
+                  <p class="text-xs font-bold mb-2 uppercase text-gray-500 tracking-wide">Tarjeta 2</p>
+                  <div class="flex gap-2 mb-2 flex-wrap">
+                    <input id="val2_icon" class="flex-1 border p-2 rounded text-sm" placeholder="Icono">
+                    <button type="button" class="btn-icon-picker px-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition" data-input="val2_icon"><i class="fas fa-icons"></i></button>
+                  </div>
+                  <input id="val2_title" class="w-full border p-2 rounded mb-2 text-sm font-semibold" placeholder="Título">
+                  <textarea id="val2_desc" class="w-full border p-2 rounded text-sm" rows="3" placeholder="Descripción"></textarea>
+                </div>
+                <div class="bg-white p-4 rounded-xl border shadow-sm hover:shadow-md transition">
+                  <p class="text-xs font-bold mb-2 uppercase text-gray-500 tracking-wide">Tarjeta 3</p>
+                  <div class="flex gap-2 mb-2 flex-wrap">
+                    <input id="val3_icon" class="flex-1 border p-2 rounded text-sm" placeholder="Icono">
+                    <button type="button" class="btn-icon-picker px-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition" data-input="val3_icon"><i class="fas fa-icons"></i></button>
+                  </div>
+                  <input id="val3_title" class="w-full border p-2 rounded mb-2 text-sm font-semibold" placeholder="Título">
+                  <textarea id="val3_desc" class="w-full border p-2 rounded text-sm" rows="3" placeholder="Descripción"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <h4 class="font-bold text-lg mb-4 text-gray-800"><i class="fas fa-info-circle mr-2 text-purple-600"></i>Sección “Sobre Nosotros”</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><label class="text-sm font-semibold text-gray-600">Etiqueta</label><input id="about_tag" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-200"></div>
+                <div><label class="text-sm font-semibold text-gray-600">Título</label><input id="about_title" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-200"></div>
+                <div class="md:col-span-2"><label class="text-sm font-semibold text-gray-600">Texto</label><textarea id="about_text" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-200" rows="4"></textarea></div>
+                <div class="md:col-span-2"><label class="text-sm font-semibold text-gray-600">Bullets (uno por línea)</label><textarea id="about_bullets" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-200" rows="4"></textarea></div>
+                
+                <div class="md:col-span-2 space-y-2">
+                   <label class="text-sm font-semibold text-gray-600">Imagen</label>
+                   <div class="flex gap-2 flex-wrap">
+                      <input id="about_image_url" class="flex-1 border p-2 rounded min-w-[200px]">
+                      <label class="px-3 py-2 rounded-lg bg-gray-900 text-white flex items-center gap-2 cursor-pointer hover:bg-black text-sm transition">
+                        <i class="fas fa-upload"></i><span>Elegir</span>
+                        <input id="about_img_file" type="file" accept="image/*" class="hidden">
+                      </label>
+                      <button type="button" id="btn-upload-about" class="px-3 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 font-semibold text-sm transition">Subir</button>
+                   </div>
+                   <img id="about_img_preview" src="" class="hidden w-28 h-20 object-cover rounded-lg border bg-gray-100 mt-2" />
+                </div>
+
+                <div><label class="text-sm font-semibold text-gray-600">Texto botón</label><input id="about_cta_text" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-200"></div>
+                <div><label class="text-sm font-semibold text-gray-600">Link botón</label><input id="about_cta_href" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-200"></div>
+              </div>
+            </div>
+            <button type="submit" class="w-full sm:w-auto bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 font-semibold transition shadow-lg flex items-center justify-center gap-2">
+                <i class="fas fa-save"></i>Guardar Home
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div id="tab-leads" class="tab-content hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-2xl font-extrabold tracking-tight text-gray-900 flex items-center gap-2">
+                <span class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center"><i class="fas fa-address-book text-purple-600"></i></span>
+                Leads
+              </h3>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="btn-refresh-leads" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-purple-600 text-white hover:bg-purple-700 transition shadow-sm"><i class="fas fa-sync"></i>Actualizar</button>
+              <button id="btn-download-leads" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-sm"><i class="fas fa-download"></i>Descargar CSV</button>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-gray-600 uppercase">Estado</label>
+                <select id="leads-filter-estado" class="w-full border bg-white px-3 py-2 rounded-xl text-sm outline-none">
+                  <option value="">Todos</option>
+                  <option value="nuevo">Nuevo</option>
+                  <option value="contactado">Contactado</option>
+                  <option value="cerrado">Cerrado</option>
+                </select>
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-bold text-gray-600 uppercase">Sede</label>
+                <select id="leads-filter-sede" class="w-full border bg-white px-3 py-2 rounded-xl text-sm outline-none">
+                  <option value="">Ambas sedes</option>
+                  <option value="ilo">Ilo</option>
+                  <option value="arequipa">Arequipa</option>
+                </select>
+              </div>
+              <div class="space-y-1 md:col-span-2">
+                <label class="text-xs font-bold text-gray-600 uppercase">Buscar</label>
+                <div class="relative">
+                  <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                  <input id="leads-search" class="w-full border bg-white pl-10 pr-3 py-2 rounded-xl text-sm outline-none" placeholder="Buscar por nombre, teléfono...">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-gray-200">
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm">
+                <thead class="bg-gray-50 sticky top-0 z-10">
+                  <tr class="text-left text-gray-700">
+                    <th class="p-4 font-bold whitespace-nowrap">Fecha</th>
+                    <th class="p-4 font-bold whitespace-nowrap">Nombre</th>
+                    <th class="p-4 font-bold whitespace-nowrap">Teléfono</th>
+                    <th class="p-4 font-bold whitespace-nowrap">Servicio</th>
+                    <th class="p-4 font-bold whitespace-nowrap">Sede</th>
+                    <th class="p-4 font-bold min-w-[200px]">Mensaje</th>
+                    <th class="p-4 font-bold whitespace-nowrap">WhatsApp</th>
+                    <th class="p-4 font-bold whitespace-nowrap">Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-tbody" class="divide-y divide-gray-100 bg-white">
+                  <tr><td class="p-4 text-gray-500 text-center" colspan="8">Cargando datos...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modal-location" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[120] p-4 backdrop-blur-sm modal-overlay">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl my-4 overflow-hidden flex flex-col max-h-[90vh]">
+      <div class="p-6 border-b flex justify-between items-center bg-gradient-to-r from-purple-600 to-indigo-600 text-white shrink-0">
+        <h3 class="text-xl sm:text-2xl font-bold" id="location-modal-title">Nueva Sede</h3>
+        <button type="button" id="btn-close-location-modal" class="text-white hover:text-gray-200 transition"><i class="fas fa-times text-2xl"></i></button>
+      </div>
+      
+      <div class="p-6 sm:p-8 overflow-y-auto">
+        <form id="location-form" class="space-y-5">
+          <input type="hidden" id="location_id">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div><label class="block text-sm font-semibold mb-2">Key (ID único)</label><input id="location_key" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200" required></div>
+             <div><label class="block text-sm font-semibold mb-2">Ciudad</label><input id="location_ciudad" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200" required></div>
+             <div><label class="block text-sm font-semibold mb-2">WhatsApp</label><input id="location_whatsapp" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200"></div>
+             <div><label class="block text-sm font-semibold mb-2">Email</label><input id="location_email" type="email" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200"></div>
+             <div class="md:col-span-2"><label class="block text-sm font-semibold mb-2">Horario</label><textarea id="location_horario" rows="2" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200"></textarea></div>
+             <div class="md:col-span-2"><label class="block text-sm font-semibold mb-2">Dirección (HTML)</label><textarea id="location_address_html" rows="3" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200 font-mono text-sm"></textarea></div>
+             <div class="md:col-span-2"><label class="block text-sm font-semibold mb-2">Map iframe</label><textarea id="location_map_iframe" rows="3" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-purple-200 font-mono text-sm"></textarea></div>
+             <div class="md:col-span-2 flex items-center gap-2 border p-3 rounded-lg bg-gray-50"><input id="location_active" type="checkbox" class="w-5 h-5 rounded text-purple-600"><label for="location_active" class="text-sm font-medium">Sede Activa</label></div>
+          </div>
+          
+          <div class="pt-4 flex gap-3 flex-wrap">
+            <button type="button" id="btn-cancel-location-modal" class="flex-1 py-3 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition">Cancelar</button>
+            <button type="submit" class="flex-[2] py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow-lg hover:shadow-xl transition">Guardar Sede</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-service" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[100] p-4 backdrop-blur-sm modal-overlay">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl my-4 overflow-hidden flex flex-col max-h-[95vh]">
+      <div class="p-6 border-b flex justify-between items-center bg-gradient-to-r from-purple-600 to-indigo-600 text-white shrink-0">
+        <h3 class="text-xl sm:text-2xl font-bold" id="modal-title">Gestión de Servicio</h3>
+        <button type="button" id="btn-close-service-modal" class="text-white hover:text-gray-200 transition"><i class="fas fa-times text-2xl"></i></button>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 overflow-y-auto">
+         <div>
+            <form id="service-form" class="space-y-5">
+               <input type="hidden" id="service_id">
+               <div class="flex items-center gap-2 mt-2"><input id="service_active" type="checkbox" class="w-5 h-5 text-purple-600 rounded" checked><label class="font-medium">Servicio Activo</label></div>
+               
+               <div class="bg-purple-50 p-4 rounded-xl border border-purple-100">
+                  <h4 class="font-bold text-purple-900 mb-3 flex items-center gap-2"><i class="fas fa-info-circle"></i> Información Básica</h4>
+                  <div class="space-y-3">
+                     <input type="text" id="service_key" class="w-full border p-2 rounded-lg text-sm focus:ring-2 focus:ring-purple-200" placeholder="Key (ej: pareja)" required>
+                     <input type="text" id="service_title" class="w-full border p-2 rounded-lg text-sm focus:ring-2 focus:ring-purple-200" placeholder="Título" required>
+                     <div class="grid grid-cols-2 gap-2">
+                        <select id="service_color" class="w-full border p-2 rounded-lg text-sm bg-white">
+                           <option value="purple">💜 Morado</option><option value="blue">💙 Azul</option><option value="green">💚 Verde</option><option value="pink">💗 Rosa</option><option value="orange">🧡 Naranja</option><option value="teal">💠 Turquesa</option><option value="indigo">💠 Índigo</option><option value="rose">🌹 Rosa</option>
+                        </select>
+                        <div class="flex gap-2">
+                           <input type="text" id="service_icon" class="w-full border p-2 rounded-lg text-sm" placeholder="Icono">
+                           <button type="button" class="btn-icon-picker px-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700" data-input="service_icon"><i class="fas fa-icons"></i></button>
+                        </div>
+                     </div>
+                     <textarea id="service_desc" rows="3" class="w-full border p-2 rounded-lg text-sm focus:ring-2 focus:ring-purple-200" placeholder="Descripción corta" required></textarea>
+                  </div>
+               </div>
+
+               <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                  <h4 class="font-bold text-blue-900 mb-3 flex items-center gap-2"><i class="fas fa-layer-group"></i> Detalles Modal</h4>
+                  <div class="space-y-3">
+                     <textarea id="service_hook" rows="2" class="w-full border p-2 rounded-lg text-sm focus:ring-2 focus:ring-blue-200" placeholder="Hook (Gancho)"></textarea>
+                     <textarea id="service_benefits" rows="4" class="w-full border p-2 rounded-lg text-sm focus:ring-2 focus:ring-blue-200" placeholder="Beneficios (uno por línea)"></textarea>
+                     <input type="text" id="service_cta" class="w-full border p-2 rounded-lg text-sm focus:ring-2 focus:ring-blue-200" placeholder="Texto Botón">
+                     <div class="space-y-2">
+                        <div class="flex gap-2 flex-wrap">
+                           <input type="text" id="service_image" class="flex-1 border p-2 rounded-lg text-sm min-w-[150px]" placeholder="URL Imagen">
+                           <label class="px-3 py-2 rounded-lg bg-gray-900 text-white flex items-center gap-2 cursor-pointer hover:bg-black text-sm transition">
+                             <i class="fas fa-upload"></i><span>Elegir</span>
+                             <input id="service_img_file" type="file" accept="image/*" class="hidden">
+                           </label>
+                           <button type="button" id="btn-upload-service" class="px-3 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 font-semibold text-sm transition">Subir</button>
+                        </div>
+                        <img id="service_img_preview" src="" class="hidden w-28 h-20 object-cover rounded-lg border bg-gray-100" />
+                     </div>
+                  </div>
+               </div>
+
+               <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                  <h4 class="font-bold text-green-900 mb-3 flex items-center gap-2"><i class="fas fa-question-circle"></i> FAQs</h4>
+                  <div id="faqs-container" class="space-y-2 mb-3"></div>
+                  <button type="button" id="btn-add-faq" class="text-sm bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition shadow-sm w-full sm:w-auto"><i class="fas fa-plus mr-1"></i>Agregar FAQ</button>
+               </div>
+
+               <div class="pt-4 flex gap-3 flex-wrap">
+                  <button type="button" id="btn-cancel-service-modal" class="flex-1 py-3 rounded-lg bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition">Cancelar</button>
+                  <button type="submit" class="flex-[2] py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow-lg hover:shadow-xl transition">Guardar Servicio</button>
+               </div>
+            </form>
+         </div>
+
+         <div class="hidden lg:block">
+            <div class="bg-gray-100 p-6 rounded-xl sticky top-0">
+                <div class="text-center mb-4"><span class="text-xs font-bold text-gray-400 uppercase tracking-widest"><i class="fas fa-eye mr-1"></i>Vista Previa en Vivo</span></div>
+                <div id="preview-container" class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div id="preview_icon_wrapper" class="w-16 h-16 rounded-2xl flex shrink-0 items-center justify-center text-2xl bg-purple-100 text-purple-600"><i id="preview_icon" class="fas fa-heart"></i></div>
+                        <div><h3 id="preview_title" class="text-xl font-bold text-gray-900 leading-tight">Título</h3><p id="preview_desc" class="text-sm text-gray-500 mt-1">Descripción...</p></div>
+                    </div>
+                    <div class="mb-4 bg-yellow-50 p-3 rounded-lg border border-yellow-100"><p id="preview_hook" class="text-sm italic text-gray-700">Hook...</p></div>
+                    <div class="mb-4"><h4 class="font-bold text-sm mb-2 text-gray-900">Beneficios:</h4><ul id="preview_benefits" class="space-y-1 text-sm text-gray-600 list-disc pl-4"></ul></div>
+                    <div class="mb-4"><h4 class="font-bold text-sm mb-2 text-gray-900">FAQs:</h4><div id="preview_faqs" class="space-y-2 text-sm"></div></div>
+                    <img id="preview_image" class="hidden w-full h-48 object-cover rounded-xl border mb-4 shadow-sm" />
+                    <button id="preview_cta" class="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold shadow hover:bg-purple-700 transition">CTA</button>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="iconPicker" class="hidden fixed inset-0 bg-black/60 z-[200] flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+      <div class="p-4 border-b flex items-center justify-between bg-gray-50 shrink-0">
+        <div class="font-bold text-gray-800 flex items-center"><i class="fas fa-icons mr-2 text-purple-600"></i>Selecciona un ícono</div>
+        <button type="button" id="btn-close-icon-picker" class="text-gray-500 hover:text-gray-800 transition"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <div class="p-4 border-b bg-white shrink-0">
+        <div class="relative">
+             <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input id="iconSearch" class="w-full border p-3 pl-10 rounded-lg focus:ring-2 focus:ring-purple-200 outline-none" placeholder="Buscar ícono...">
+        </div>
+      </div>
+      <div id="iconGrid" class="p-4 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 overflow-y-auto bg-gray-50"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="./js/admin.js"></script>
+
+</body>
+</html>
