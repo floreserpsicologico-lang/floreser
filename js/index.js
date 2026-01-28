@@ -209,9 +209,35 @@ window.setLocation = (key) => {
 
     const map = document.getElementById('map-container');
     if (map) {
-        map.innerHTML = loc.map_iframe
-            ? loc.map_iframe
-            : '<p class="text-gray-500">Sede sin mapa configurado.</p>';
+        if (loc.map_iframe) {
+            // Crear un contenedor temporal para parsear el iframe
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = loc.map_iframe;
+            const iframe = tempDiv.querySelector('iframe');
+            
+            if (iframe) {
+                // Aplicar las características del mapa como en la configuración
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', '100%');
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('scrolling', 'no');
+                iframe.setAttribute('marginheight', '0');
+                iframe.setAttribute('marginwidth', '0');
+                iframe.setAttribute('class', 'absolute inset-0');
+                iframe.setAttribute('loading', 'lazy');
+                
+                // Si no tiene title, agregar uno genérico
+                if (!iframe.getAttribute('title')) {
+                    iframe.setAttribute('title', `Ubicación ${sedeNombre}`);
+                }
+                
+                map.innerHTML = tempDiv.innerHTML;
+            } else {
+                map.innerHTML = loc.map_iframe;
+            }
+        } else {
+            map.innerHTML = '<p class="text-gray-500">Sede sin mapa configurado.</p>';
+        }
     }
 
     const selectSede = document.getElementById('sede');

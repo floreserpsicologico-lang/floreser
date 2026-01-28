@@ -84,9 +84,14 @@ function cancelEdit() {
 
 async function save() {
     const id = document.getElementById('slide_id_edit').value;
+    
+    // ✅ CAMBIO: Construir el título con dos líneas
+    const line1 = document.getElementById('new_title_line1').value.trim();
+    const line2 = document.getElementById('new_title_line2').value.trim();
+    
     const dataObj = {
         subtitle: document.getElementById('new_subtitle').value.trim(),
-        title: document.getElementById('new_title').value.trim(), // Title puede llevar HTML simple, no escapamos aquí
+        title: `${line1} <br><span class='text-brand-600'>${line2}</span>`, // ✅ HTML generado automáticamente
         description: document.getElementById('new_desc').value.trim(),
         image_url: document.getElementById('new_img').value.trim()
     };
@@ -117,7 +122,14 @@ export function edit(id) {
 
     document.getElementById('slide_id_edit').value = slide.id;
     document.getElementById('new_subtitle').value = slide.subtitle;
-    document.getElementById('new_title').value = slide.title;
+    
+    // ✅ CAMBIO: Separar el título en dos campos
+    const titleParts = slide.title.split('<br>');
+    document.getElementById('new_title_line1').value = titleParts[0].trim();
+    
+    const line2Match = slide.title.match(/<span[^>]*>(.*?)<\/span>/);
+    document.getElementById('new_title_line2').value = line2Match ? line2Match[1].trim() : '';
+    
     document.getElementById('new_desc').value = slide.description;
     document.getElementById('new_img').value = slide.image_url;
 
