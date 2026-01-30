@@ -458,7 +458,14 @@ window.openModal = (key) => {
     if (!data) return;
 
     const modal = document.getElementById('serviceModal');
+    const backdrop = document.getElementById('modalBackdrop');
+    const card = document.getElementById('modalCard');
     
+    // RESETEAR CLASES DE ANIMACIÓN ANTES DE ABRIR
+    backdrop.classList.remove('modal-backdrop-enter', 'modal-backdrop-leave');
+    card.classList.remove('modal-card-enter', 'modal-card-leave');
+    
+    // Actualizar contenido
     document.getElementById('modalTitle').textContent = data.title;
     const imgEl = document.getElementById('modalImage');
     imgEl.src = data.image_url || 'img/default.jpg';
@@ -482,12 +489,17 @@ window.openModal = (key) => {
 
     document.getElementById('modalCtaBtn').innerHTML = `${data.cta || 'Agendar Cita'} <i class="fas fa-arrow-right ml-2"></i>`;
 
-    modal.scrollTop = 0;
-    
-    // AHORA SÍ MOSTRAR EL MODAL (después de actualizar el contenido)
+    // Mostrar el modal
     modal.classList.remove('hidden');
-    document.getElementById('modalBackdrop').classList.add('modal-backdrop-enter');
-    document.getElementById('modalCard').classList.add('modal-card-enter');
+    
+    // RESETEAR SCROLL DESPUÉS DE MOSTRAR (importante para que funcione)
+    requestAnimationFrame(() => {
+        modal.scrollTop = 0;
+        
+        // Aplicar animaciones de entrada
+        backdrop.classList.add('modal-backdrop-enter');
+        card.classList.add('modal-card-enter');
+    });
 };
 
 window.closeServiceModal = () => {
