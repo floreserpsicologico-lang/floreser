@@ -12,7 +12,6 @@ import * as Leads from './modules/admin/leads.js';
 // 1. INICIALIZACIÓN (Entry Point)
 // ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('🚀 Admin Panel Iniciando...');
 
     // Verificar Sesión
     const session = await Auth.checkSession();
@@ -80,7 +79,6 @@ async function initModules() {
     await Leads.load();
     Leads.setupEvents();
 
-    console.log('✅ Todos los módulos cargados.');
 }
 
 // ==========================================
