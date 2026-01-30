@@ -16,17 +16,30 @@ export async function load() {
     render();
 }
 
+
 function render() {
     const container = document.getElementById('team-list');
     if (!teamData.length) return container.innerHTML = '<p class="text-gray-500 py-4 text-center">No hay miembros.</p>';
 
+    const colorMap = {
+        blue: 'bg-blue-50 border-blue-200',
+        emerald: 'bg-emerald-50 border-emerald-200',
+        green: 'bg-green-50 border-green-200',
+        red: 'bg-red-50 border-red-200',
+        yellow: 'bg-yellow-50 border-yellow-200',
+        purple: 'bg-purple-50 border-purple-200',
+        pink: 'bg-pink-50 border-pink-200',
+        indigo: 'bg-indigo-50 border-indigo-200',
+        gray: 'bg-gray-50 border-gray-200'
+    };
+
     container.innerHTML = teamData.map(member => {
-        // Estilo dinámico basado en el color (blue, purple, etc.)
-        const color = member.color || 'gray';
-        const bgClass = `bg-${color}-50`; 
+        // 2. Busca la clase completa. Si no existe el color, usa gris por defecto.
+        const colorKey = member.color || 'gray';
+        const bgClass = colorMap[colorKey] || colorMap['gray']; 
         
         return `
-        <div class="border border-gray-200 p-4 rounded-lg flex justify-between items-start ${bgClass} hover:shadow-md transition">
+        <div class="border p-4 rounded-lg flex justify-between items-start ${bgClass} hover:shadow-md transition">
             <div class="flex-1">
                 <div class="flex items-center gap-2">
                     <p class="font-bold text-gray-800">${Utils.escapeHtml(member.name)}</p>

@@ -1,4 +1,11 @@
-    .scroll-smooth { scroll-behavior: smooth; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* tu CSS propio debajo */
+   
+   
+   .scroll-smooth { scroll-behavior: smooth; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .nav-link.active { color: #702F8A; border-bottom-color: #702F8A; }

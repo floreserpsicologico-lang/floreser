@@ -1,8 +1,8 @@
 // Variable interna para saber qué input está esperando un icono
 let activeIconInputId = null;
 
-// Lista de iconos disponibles (FontAwesome 6 Free)
 const ICONS = [
+    
     "fa-solid fa-heart", "fa-solid fa-brain", "fa-solid fa-star", "fa-solid fa-hand-holding-heart",
     "fa-solid fa-user-doctor", "fa-solid fa-users", "fa-solid fa-user-group", "fa-solid fa-comments",
     "fa-solid fa-comment-dots", "fa-solid fa-face-smile", "fa-solid fa-seedling", "fa-solid fa-leaf",
@@ -11,8 +11,43 @@ const ICONS = [
     "fa-solid fa-graduation-cap", "fa-solid fa-hands", "fa-solid fa-handshake", "fa-solid fa-clock",
     "fa-solid fa-calendar", "fa-solid fa-location-dot", "fa-solid fa-phone", "fa-solid fa-envelope",
     "fa-solid fa-house", "fa-solid fa-people-arrows", "fa-solid fa-user", "fa-solid fa-user-shield",
-    "fa-solid fa-bolt", "fa-solid fa-fire", "fa-brands fa-whatsapp", "fa-brands fa-facebook", 
-    "fa-brands fa-instagram", "fa-brands fa-tiktok", "fa-brands fa-youtube"
+    "fa-solid fa-bolt", "fa-solid fa-fire", 
+    
+    // --- Redes Sociales ---
+    "fa-brands fa-whatsapp", "fa-brands fa-facebook", "fa-brands fa-instagram", 
+    "fa-brands fa-tiktok", "fa-brands fa-youtube",
+
+    // --- NUEVOS: Certificados y Documentos ---
+    "fa-solid fa-certificate",       // Certificado / Sello de calidad
+    "fa-solid fa-award",             // Premio / Logro
+    "fa-solid fa-file-medical",      // Historia clínica / Informe
+    "fa-solid fa-clipboard-check",   // Evaluación completada
+    "fa-solid fa-id-card-clip",      // Credencial profesional
+
+    // --- NUEVOS: Salas y Lugares ---
+    "fa-solid fa-hospital",          // Hospital / Clínica
+    "fa-solid fa-bed-pulse",         // Sala de recuperación / Internamiento
+    "fa-solid fa-building-user",     // Consultorio
+    "fa-solid fa-chair",             // Sala de espera
+
+    // --- NUEVOS: Médico y Herramientas ---
+    "fa-solid fa-stethoscope",       // Estetoscopio (Diagnóstico)
+    "fa-solid fa-syringe",           // Inyección / Tratamiento
+    "fa-solid fa-pills",             // Medicación
+    "fa-solid fa-kit-medical",       // Primeros auxilios
+    "fa-solid fa-microscope",        // Laboratorio / Análisis
+    "fa-solid fa-user-nurse",        // Enfermería
+    "fa-solid fa-wheelchair",        // Accesibilidad
+    "fas fa-couch",                  // Silla
+    "fas fa-shapes",  
+    "fas fa-file-medical-alt",
+    "fas fa-user",
+    "fas fa-child",
+    "fas fa-brain",
+    "fas fa-puzzle-piece"
+
+
+
 ];
 
 // =======================
@@ -129,7 +164,7 @@ export function openIconPicker(inputId) {
         if (search) {
             search.value = '';
             search.focus();
-            renderIconGrid(""); // Reiniciar grid
+            renderIconGrid(""); 
         }
     }
 }

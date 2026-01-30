@@ -457,6 +457,8 @@ window.openModal = (key) => {
     const data = serviceDataGlobal[key];
     if (!data) return;
 
+    const modal = document.getElementById('serviceModal');
+    
     document.getElementById('modalTitle').textContent = data.title;
     const imgEl = document.getElementById('modalImage');
     imgEl.src = data.image_url || 'img/default.jpg';
@@ -480,7 +482,9 @@ window.openModal = (key) => {
 
     document.getElementById('modalCtaBtn').innerHTML = `${data.cta || 'Agendar Cita'} <i class="fas fa-arrow-right ml-2"></i>`;
 
-    const modal = document.getElementById('serviceModal');
+    modal.scrollTop = 0;
+    
+    // AHORA SÍ MOSTRAR EL MODAL (después de actualizar el contenido)
     modal.classList.remove('hidden');
     document.getElementById('modalBackdrop').classList.add('modal-backdrop-enter');
     document.getElementById('modalCard').classList.add('modal-card-enter');
